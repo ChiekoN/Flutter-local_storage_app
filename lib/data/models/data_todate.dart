@@ -7,14 +7,14 @@ import 'package:path/path.dart' as p;
 
 part 'data_todate.g.dart';
 
-class ToDateDb extends Table {
+class TodateDb extends Table {
   IntColumn get id => integer().autoIncrement()();
   DateTimeColumn get date => dateTime()();
   TextColumn get title => text()();
   TextColumn get memo => text().nullable()();
 }
 
-@DriftDatabase(tables: [ToDateDb])
+@DriftDatabase(tables: [TodateDb])
 class AppDatabase extends _$AppDatabase {
 
   AppDatabase([QueryExecutor? executor]) : super(executor ?? _openConnection());
@@ -23,17 +23,17 @@ class AppDatabase extends _$AppDatabase {
   int get schemaVersion => 1;
 
   // Get all entries
-  Future<List<ToDateDbData>> getAllItems() => select(toDateDb).get();
+  Future<List<TodateDbData>> getAllItems() => select(todateDb).get();
 
   // Add
-  Future<int> createItem(ToDateDbCompanion entry) => into(toDateDb).insert(entry);
+  Future<int> createItem(TodateDbCompanion entry) => into(todateDb).insert(entry);
 
   // Update
-  Future<int> updateItem(ToDateDbCompanion entry) => into(toDateDb).insert(entry);
+  Future<int> updateItem(TodateDbCompanion entry) => into(todateDb).insert(entry);
 
   // Delete
   Future<int> deleteItem(int id) => 
-    (delete(toDateDb)..where((t) => t.id.equals(id))).go();
+    (delete(todateDb)..where((t) => t.id.equals(id))).go();
 }
 
 LazyDatabase _openConnection() {
