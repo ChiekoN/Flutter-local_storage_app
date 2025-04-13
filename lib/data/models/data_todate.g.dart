@@ -3,12 +3,12 @@
 part of 'data_todate.dart';
 
 // ignore_for_file: type=lint
-class $ToDateDbTable extends ToDateDb
-    with TableInfo<$ToDateDbTable, ToDateDbData> {
+class $TodateDbTable extends TodateDb
+    with TableInfo<$TodateDbTable, TodateDbData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ToDateDbTable(this.attachedDatabase, [this._alias]);
+  $TodateDbTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
@@ -55,10 +55,10 @@ class $ToDateDbTable extends ToDateDb
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'to_date_db';
+  static const String $name = 'todate_db';
   @override
   VerificationContext validateIntegrity(
-    Insertable<ToDateDbData> instance, {
+    Insertable<TodateDbData> instance, {
     bool isInserting = false,
   }) {
     final context = VerificationContext();
@@ -94,9 +94,9 @@ class $ToDateDbTable extends ToDateDb
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ToDateDbData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  TodateDbData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ToDateDbData(
+    return TodateDbData(
       id:
           attachedDatabase.typeMapping.read(
             DriftSqlType.int,
@@ -120,17 +120,17 @@ class $ToDateDbTable extends ToDateDb
   }
 
   @override
-  $ToDateDbTable createAlias(String alias) {
-    return $ToDateDbTable(attachedDatabase, alias);
+  $TodateDbTable createAlias(String alias) {
+    return $TodateDbTable(attachedDatabase, alias);
   }
 }
 
-class ToDateDbData extends DataClass implements Insertable<ToDateDbData> {
+class TodateDbData extends DataClass implements Insertable<TodateDbData> {
   final int id;
   final DateTime date;
   final String title;
   final String? memo;
-  const ToDateDbData({
+  const TodateDbData({
     required this.id,
     required this.date,
     required this.title,
@@ -148,8 +148,8 @@ class ToDateDbData extends DataClass implements Insertable<ToDateDbData> {
     return map;
   }
 
-  ToDateDbCompanion toCompanion(bool nullToAbsent) {
-    return ToDateDbCompanion(
+  TodateDbCompanion toCompanion(bool nullToAbsent) {
+    return TodateDbCompanion(
       id: Value(id),
       date: Value(date),
       title: Value(title),
@@ -157,12 +157,12 @@ class ToDateDbData extends DataClass implements Insertable<ToDateDbData> {
     );
   }
 
-  factory ToDateDbData.fromJson(
+  factory TodateDbData.fromJson(
     Map<String, dynamic> json, {
     ValueSerializer? serializer,
   }) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return ToDateDbData(
+    return TodateDbData(
       id: serializer.fromJson<int>(json['id']),
       date: serializer.fromJson<DateTime>(json['date']),
       title: serializer.fromJson<String>(json['title']),
@@ -180,19 +180,19 @@ class ToDateDbData extends DataClass implements Insertable<ToDateDbData> {
     };
   }
 
-  ToDateDbData copyWith({
+  TodateDbData copyWith({
     int? id,
     DateTime? date,
     String? title,
     Value<String?> memo = const Value.absent(),
-  }) => ToDateDbData(
+  }) => TodateDbData(
     id: id ?? this.id,
     date: date ?? this.date,
     title: title ?? this.title,
     memo: memo.present ? memo.value : this.memo,
   );
-  ToDateDbData copyWithCompanion(ToDateDbCompanion data) {
-    return ToDateDbData(
+  TodateDbData copyWithCompanion(TodateDbCompanion data) {
+    return TodateDbData(
       id: data.id.present ? data.id.value : this.id,
       date: data.date.present ? data.date.value : this.date,
       title: data.title.present ? data.title.value : this.title,
@@ -202,7 +202,7 @@ class ToDateDbData extends DataClass implements Insertable<ToDateDbData> {
 
   @override
   String toString() {
-    return (StringBuffer('ToDateDbData(')
+    return (StringBuffer('TodateDbData(')
           ..write('id: $id, ')
           ..write('date: $date, ')
           ..write('title: $title, ')
@@ -216,32 +216,32 @@ class ToDateDbData extends DataClass implements Insertable<ToDateDbData> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is ToDateDbData &&
+      (other is TodateDbData &&
           other.id == this.id &&
           other.date == this.date &&
           other.title == this.title &&
           other.memo == this.memo);
 }
 
-class ToDateDbCompanion extends UpdateCompanion<ToDateDbData> {
+class TodateDbCompanion extends UpdateCompanion<TodateDbData> {
   final Value<int> id;
   final Value<DateTime> date;
   final Value<String> title;
   final Value<String?> memo;
-  const ToDateDbCompanion({
+  const TodateDbCompanion({
     this.id = const Value.absent(),
     this.date = const Value.absent(),
     this.title = const Value.absent(),
     this.memo = const Value.absent(),
   });
-  ToDateDbCompanion.insert({
+  TodateDbCompanion.insert({
     this.id = const Value.absent(),
     required DateTime date,
     required String title,
     this.memo = const Value.absent(),
   }) : date = Value(date),
        title = Value(title);
-  static Insertable<ToDateDbData> custom({
+  static Insertable<TodateDbData> custom({
     Expression<int>? id,
     Expression<DateTime>? date,
     Expression<String>? title,
@@ -255,13 +255,13 @@ class ToDateDbCompanion extends UpdateCompanion<ToDateDbData> {
     });
   }
 
-  ToDateDbCompanion copyWith({
+  TodateDbCompanion copyWith({
     Value<int>? id,
     Value<DateTime>? date,
     Value<String>? title,
     Value<String?>? memo,
   }) {
-    return ToDateDbCompanion(
+    return TodateDbCompanion(
       id: id ?? this.id,
       date: date ?? this.date,
       title: title ?? this.title,
@@ -289,7 +289,7 @@ class ToDateDbCompanion extends UpdateCompanion<ToDateDbData> {
 
   @override
   String toString() {
-    return (StringBuffer('ToDateDbCompanion(')
+    return (StringBuffer('TodateDbCompanion(')
           ..write('id: $id, ')
           ..write('date: $date, ')
           ..write('title: $title, ')
@@ -302,32 +302,32 @@ class ToDateDbCompanion extends UpdateCompanion<ToDateDbData> {
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
-  late final $ToDateDbTable toDateDb = $ToDateDbTable(this);
+  late final $TodateDbTable todateDb = $TodateDbTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities => [toDateDb];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [todateDb];
 }
 
-typedef $$ToDateDbTableCreateCompanionBuilder =
-    ToDateDbCompanion Function({
+typedef $$TodateDbTableCreateCompanionBuilder =
+    TodateDbCompanion Function({
       Value<int> id,
       required DateTime date,
       required String title,
       Value<String?> memo,
     });
-typedef $$ToDateDbTableUpdateCompanionBuilder =
-    ToDateDbCompanion Function({
+typedef $$TodateDbTableUpdateCompanionBuilder =
+    TodateDbCompanion Function({
       Value<int> id,
       Value<DateTime> date,
       Value<String> title,
       Value<String?> memo,
     });
 
-class $$ToDateDbTableFilterComposer
-    extends Composer<_$AppDatabase, $ToDateDbTable> {
-  $$ToDateDbTableFilterComposer({
+class $$TodateDbTableFilterComposer
+    extends Composer<_$AppDatabase, $TodateDbTable> {
+  $$TodateDbTableFilterComposer({
     required super.$db,
     required super.$table,
     super.joinBuilder,
@@ -355,9 +355,9 @@ class $$ToDateDbTableFilterComposer
   );
 }
 
-class $$ToDateDbTableOrderingComposer
-    extends Composer<_$AppDatabase, $ToDateDbTable> {
-  $$ToDateDbTableOrderingComposer({
+class $$TodateDbTableOrderingComposer
+    extends Composer<_$AppDatabase, $TodateDbTable> {
+  $$TodateDbTableOrderingComposer({
     required super.$db,
     required super.$table,
     super.joinBuilder,
@@ -385,9 +385,9 @@ class $$ToDateDbTableOrderingComposer
   );
 }
 
-class $$ToDateDbTableAnnotationComposer
-    extends Composer<_$AppDatabase, $ToDateDbTable> {
-  $$ToDateDbTableAnnotationComposer({
+class $$TodateDbTableAnnotationComposer
+    extends Composer<_$AppDatabase, $TodateDbTable> {
+  $$TodateDbTableAnnotationComposer({
     required super.$db,
     required super.$table,
     super.joinBuilder,
@@ -407,42 +407,42 @@ class $$ToDateDbTableAnnotationComposer
       $composableBuilder(column: $table.memo, builder: (column) => column);
 }
 
-class $$ToDateDbTableTableManager
+class $$TodateDbTableTableManager
     extends
         RootTableManager<
           _$AppDatabase,
-          $ToDateDbTable,
-          ToDateDbData,
-          $$ToDateDbTableFilterComposer,
-          $$ToDateDbTableOrderingComposer,
-          $$ToDateDbTableAnnotationComposer,
-          $$ToDateDbTableCreateCompanionBuilder,
-          $$ToDateDbTableUpdateCompanionBuilder,
+          $TodateDbTable,
+          TodateDbData,
+          $$TodateDbTableFilterComposer,
+          $$TodateDbTableOrderingComposer,
+          $$TodateDbTableAnnotationComposer,
+          $$TodateDbTableCreateCompanionBuilder,
+          $$TodateDbTableUpdateCompanionBuilder,
           (
-            ToDateDbData,
-            BaseReferences<_$AppDatabase, $ToDateDbTable, ToDateDbData>,
+            TodateDbData,
+            BaseReferences<_$AppDatabase, $TodateDbTable, TodateDbData>,
           ),
-          ToDateDbData,
+          TodateDbData,
           PrefetchHooks Function()
         > {
-  $$ToDateDbTableTableManager(_$AppDatabase db, $ToDateDbTable table)
+  $$TodateDbTableTableManager(_$AppDatabase db, $TodateDbTable table)
     : super(
         TableManagerState(
           db: db,
           table: table,
           createFilteringComposer:
-              () => $$ToDateDbTableFilterComposer($db: db, $table: table),
+              () => $$TodateDbTableFilterComposer($db: db, $table: table),
           createOrderingComposer:
-              () => $$ToDateDbTableOrderingComposer($db: db, $table: table),
+              () => $$TodateDbTableOrderingComposer($db: db, $table: table),
           createComputedFieldComposer:
-              () => $$ToDateDbTableAnnotationComposer($db: db, $table: table),
+              () => $$TodateDbTableAnnotationComposer($db: db, $table: table),
           updateCompanionCallback:
               ({
                 Value<int> id = const Value.absent(),
                 Value<DateTime> date = const Value.absent(),
                 Value<String> title = const Value.absent(),
                 Value<String?> memo = const Value.absent(),
-              }) => ToDateDbCompanion(
+              }) => TodateDbCompanion(
                 id: id,
                 date: date,
                 title: title,
@@ -454,7 +454,7 @@ class $$ToDateDbTableTableManager
                 required DateTime date,
                 required String title,
                 Value<String?> memo = const Value.absent(),
-              }) => ToDateDbCompanion.insert(
+              }) => TodateDbCompanion.insert(
                 id: id,
                 date: date,
                 title: title,
@@ -475,27 +475,27 @@ class $$ToDateDbTableTableManager
       );
 }
 
-typedef $$ToDateDbTableProcessedTableManager =
+typedef $$TodateDbTableProcessedTableManager =
     ProcessedTableManager<
       _$AppDatabase,
-      $ToDateDbTable,
-      ToDateDbData,
-      $$ToDateDbTableFilterComposer,
-      $$ToDateDbTableOrderingComposer,
-      $$ToDateDbTableAnnotationComposer,
-      $$ToDateDbTableCreateCompanionBuilder,
-      $$ToDateDbTableUpdateCompanionBuilder,
+      $TodateDbTable,
+      TodateDbData,
+      $$TodateDbTableFilterComposer,
+      $$TodateDbTableOrderingComposer,
+      $$TodateDbTableAnnotationComposer,
+      $$TodateDbTableCreateCompanionBuilder,
+      $$TodateDbTableUpdateCompanionBuilder,
       (
-        ToDateDbData,
-        BaseReferences<_$AppDatabase, $ToDateDbTable, ToDateDbData>,
+        TodateDbData,
+        BaseReferences<_$AppDatabase, $TodateDbTable, TodateDbData>,
       ),
-      ToDateDbData,
+      TodateDbData,
       PrefetchHooks Function()
     >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
   $AppDatabaseManager(this._db);
-  $$ToDateDbTableTableManager get toDateDb =>
-      $$ToDateDbTableTableManager(_db, _db.toDateDb);
+  $$TodateDbTableTableManager get todateDb =>
+      $$TodateDbTableTableManager(_db, _db.todateDb);
 }
