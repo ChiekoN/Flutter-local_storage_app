@@ -1,4 +1,7 @@
+//import 'dart:js_interop';
+
 import 'package:uuid/uuid.dart';
+import 'package:drift/drift.dart';
 
 import '../../domain/models/todate.dart';
 import '../../domain/repository/todate_repo.dart';
@@ -6,6 +9,7 @@ import '../models/data_todate.dart';
 
 class TodateRepoData implements TodateRepo {
 
+  /*
   // Initial data for a sample
   List<Todate> todates = [
     Todate(
@@ -45,48 +49,59 @@ class TodateRepoData implements TodateRepo {
       memo: 'No plan yet',
     ),
   ];
+  */
+
+  final AppDatabase _database = AppDatabase();
 
   @override
-  List<Todate> getTodates() {
-    sortTodates();
-    return todates;
+  Future<List<Todate>> getTodates() async {
+
+    List<TodateDbData> todatesDb = await _database.getAllItems();
+    List<Todate> todates = todatesDb.map(
+      (entry) => Todate(
+        id: entry.id.toString(),
+        date: entry.date,
+        title: entry.title,
+        memo: entry.memo,
+      )).toList();
+    return sortTodates(todates);
   }
 
   @override
-  void addTodate(Todate newTodate) {
+  Future<void> addTodate(Todate newTodate) async {
     newTodate.date = newTodate.dateOnly; // Set the Time in DateTime to 00:00:00 forcibly.
-    todates.add(newTodate);
-    //sortTodates();
-  }
-
-
-  @override
-  void updateTodate(Todate todate) {
     
-    int index = todates.indexWhere(
-      (d) => d.id == todate.id
+    await _database.createItem(
+      TodateDbCompanion.insert(
+        date: newTodate.date,
+        title: newTodate.title,
+        memo: Value(newTodate.memo),
+      )
     );
+  }
 
-    todates[index].date = todate.dateOnly; // Set the Time in DateTime to 00:00:00 forcibly.
-    todates[index].title = todate.title;
-    todates[index].memo = todate.memo;
-    //sortTodates();
+
+  @override
+  Future<void> updateTodate(Todate todate) async {
+    
+    await _database.updateItem(
+      TodateDbCompanion(
+        id: Value(int.parse(todate.id!)),
+        date: Value(todate.date),
+        title: Value(todate.title),
+        memo: Value(todate.memo),
+        )
+    );
   }
 
   @override
-  void deleteTodate(Todate todate) {
+  Future<void> deleteTodate(Todate todate) async {
 
-    int index = todates.indexWhere(
-      (d) => d.id == todate.id
-    );
-    todates.removeAt(index);
-    //sortTodates();
+    await _database.deleteItem(int.parse(todate.id!));
   }
 
-  void sortTodates() {
+  List<Todate> sortTodates(List<Todate> todates) {
     todates.sort((a, b) => a.date.compareTo(b.date));
+    return(todates);
   }
-
-
-
 } 
