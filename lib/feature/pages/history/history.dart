@@ -27,6 +27,20 @@ class _HistoryListPageState extends State<HistoryListPage> {
           (todate) => todate.date.isBefore(today)
         ).toList();
 
+        if(futureTodates.isEmpty) {
+          return Padding( 
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "No history yet.",
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
+            ),
+          );
+        }
         return ListView.builder(  
           itemCount: futureTodates.length,
           itemBuilder: (context, index) {

@@ -27,6 +27,21 @@ class _TopListPageState extends State<TopListPage> {
           (todate) => todate.date.isAfter(today) || todate.date == today
         ).toList();
 
+        if(futureTodates.isEmpty) {
+          return Padding( 
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  "Add your first date by pressing [+].",
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ],
+            ),
+          );
+        }
+
         return ListView.builder(  
           itemCount: futureTodates.length,
           itemBuilder: (context, index) {
