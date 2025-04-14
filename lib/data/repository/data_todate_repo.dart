@@ -102,7 +102,17 @@ class TodateRepoData implements TodateRepo {
   }
 
   List<Todate> sortTodates(List<Todate> todates) {
-    todates.sort((a, b) => a.date.compareTo(b.date));
+    //todates.sort((a, b) => a.date.compareTo(b.date));
+    todates.sort(todateComparison);
     return(todates);
+  }
+
+  int todateComparison(Todate a, Todate b) {
+    int result = a.date.compareTo(b.date);
+
+    if(result == 0) { // If they are the same date, sort by id.
+      result = int.parse(a.id!).compareTo(int.parse(b.id!));
+    }
+    return result;
   }
 } 
