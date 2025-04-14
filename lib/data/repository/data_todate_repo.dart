@@ -83,7 +83,8 @@ class TodateRepoData implements TodateRepo {
 
   @override
   Future<void> updateTodate(Todate todate) async {
-    
+    todate.date = todate.dateOnly; // Set the Time in DateTime to 00:00:00 forcibly.
+
     await _database.updateItem(
       TodateDbCompanion(
         id: Value(int.parse(todate.id!)),

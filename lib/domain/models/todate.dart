@@ -9,9 +9,9 @@ class Todate {
   Todate({ 
     required this.date,
     required this.title,
-    String? id,
+    this.id,
     this.memo,
-  }) : id = id ?? const Uuid().v4();
+  }) ;
 
   // DateTime Object contains time. This getter returns a String which has only date (in the user's timezone)
   String get dateString => '${date.toLocal()}'.split(' ')[0];

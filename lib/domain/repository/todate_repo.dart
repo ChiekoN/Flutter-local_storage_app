@@ -10,15 +10,4 @@ abstract class TodateRepo {
 
   Future<void> deleteTodate(Todate todate);
   
-  /*
-  List<Todate> getTodates();
-
-  //List<Todate> getFutureTodates();
-
-  void addTodate(Todate newTodate);
-
-  void updateTodate(Todate todate);
-
-  void deleteTodate(Todate todate);
-  */
 }

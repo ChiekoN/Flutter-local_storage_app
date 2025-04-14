@@ -12,26 +12,33 @@ class TodateCubit extends Cubit<List<Todate>>{
   }
 
   // Load
-  void loadTodates() {
-    final List<Todate> todateList = todateRepo.getTodates();
+  Future<void> loadTodates() async {
+    final List<Todate> todateList = await todateRepo.getTodates();
+    // DEBUG
+    print("--- Dump start ---");
+    for(var item in todateList) {
+      print("${item.id}, ${item.date}, ${item.title}, ${item.memo}");
+    }
+    print("--- Dump end ---");
+    // End of DEBUG
     emit(todateList);
   }
 
   // Add
-  void addTodate(Todate newTodate) {
-    todateRepo.addTodate(newTodate);
+  Future<void> addTodate(Todate newTodate) async {
+    await todateRepo.addTodate(newTodate);
     loadTodates();
   }
 
   // Update
-  void updateTodate(Todate newTodate) {
-    todateRepo.updateTodate(newTodate);
+  Future<void> updateTodate(Todate newTodate) async {
+    await todateRepo.updateTodate(newTodate);
     loadTodates();
   }
 
   // Delete
-  void deleteTodate(Todate deletedTodate) {
-    todateRepo.deleteTodate(deletedTodate);
+  Future<void> deleteTodate(Todate deletedTodate) async {
+    await todateRepo.deleteTodate(deletedTodate);
     loadTodates();
   }
 }
