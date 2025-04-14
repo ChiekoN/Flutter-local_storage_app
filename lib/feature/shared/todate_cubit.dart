@@ -27,18 +27,18 @@ class TodateCubit extends Cubit<List<Todate>>{
   // Add
   Future<void> addTodate(Todate newTodate) async {
     await todateRepo.addTodate(newTodate);
-    loadTodates();
+    await loadTodates();
   }
 
   // Update
   Future<void> updateTodate(Todate newTodate) async {
     await todateRepo.updateTodate(newTodate);
-    loadTodates();
+    await loadTodates();
   }
 
   // Delete
   Future<void> deleteTodate(Todate deletedTodate) async {
     await todateRepo.deleteTodate(deletedTodate);
-    loadTodates();
+    await loadTodates();
   }
 }
