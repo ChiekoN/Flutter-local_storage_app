@@ -24,9 +24,9 @@ Flutter has some options for local storage.
  - **ObjectBox:** NoSQL, object-oriented database with excellent performance ([doc](https://pub.dev/packages/objectbox))
 
 
-**shared_preference** will be sufficient for small data and could be the first choice. But considering versatility and scalability, I decided to explore a database package here.
+**shared_preference** will be sufficient for small data and could be the first choice. But considering versatility and scalability in the future, I decided to explore a database package here.
 
-Then, I thought of **Hive** because it seemed fast and lightweight as well as simple to use. However, I encountered some discussion online and I noticed Hive hasn't been maintained for some time. After seeking alternatives, I decided to try **Drift** here. Drift could be a bit complicated for beginners like me to understand (actually I felt so), but *Type safety* and availability of *Stream queries* (I don't use this feature in this project, though) can be valuable features to use in the future.
+Then, I thought of **Hive** because it seemed fast and lightweight as well as simple to use. However, I encountered some discussion on the internet and I noticed Hive hadn't been maintained for some time. After seeking alternatives, I decided to try **Drift** here. Drift could be a bit complicated for beginners like me to understand (actually I felt so), but *Type safety* and availability of *Stream queries* (I don't use this feature in this project, though) are valuable features if they are at hand.
  
 
 ## Code
