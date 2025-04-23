@@ -18,7 +18,7 @@ class _NewDatePageState extends State<NewDatePage> {
   DateTime firstDate = DateTime.now().add(Duration(days:1)); // Available date is tomorrow and after.
   DateTime selectedDate = DateTime.now().add(Duration(days:1)); // Initial value
   DateTime lastDate = DateTime(2200); // Max date
-  String selectedDateString = 'No date selected yet';
+  String selectedDateString = '';
 
   final textController = TextEditingController();
   String title = '';
@@ -119,7 +119,7 @@ class _NewDatePageState extends State<NewDatePage> {
                   Padding(
                     padding: EdgeInsets.only(left: 16.0), 
                     child: Text(
-                      selectedDateString,
+                      selectedDateString.isEmpty ? "Not selected yet" : selectedDateString,
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ),
