@@ -46,7 +46,6 @@ class DateDetailPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: children,
                 ),
-              
               ),
             ),
           );

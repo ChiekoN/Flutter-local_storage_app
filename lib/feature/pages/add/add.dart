@@ -152,14 +152,6 @@ class _NewDatePageState extends State<NewDatePage> {
           ],
         ),
       ),
-      /*
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.go(AppRoutes.home);
-        },
-        child: const Icon(Icons.close),
-      ),
-      */
     );
   }
 }
